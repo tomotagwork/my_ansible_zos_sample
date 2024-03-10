@@ -1,0 +1,20 @@
+- name: submit a zos command
+  hosts: ezdwazi04 
+  environment: "{{ environment_vars }}"
+  gather_facts: no
+  
+  tasks:
+    - name: envvars
+      debug:
+        msg: "environemt_variables are {{ environment_vars }}"
+        
+    - name: execute an operator command
+      ibm.ibm_zos_core.zos_operator:
+        cmd: "D T"
+      register: tmp_result
+      changed_when: False
+
+    - name: display results
+      debug: 
+        msg: "command output {{ tmp_result }}"
+
