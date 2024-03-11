@@ -64,7 +64,7 @@ all:
 
 ### hostごとの環境変数ファイル
 
-host_vars/<name>.yml をカスタマイズします(inventory.ymlで定義した名前と同じ名前のyamlファイルを作成し、その環境用の環境変数を設定します)。
+`host_vars/<name>.yml` をカスタマイズします(inventory.ymlで定義した名前と同じ名前のyamlファイルを作成し、その環境用の環境変数を設定します)。
 
 ```yaml
 PYZ: "/usr/lpp/IBM/cyp/v3r11/pyz"
@@ -90,6 +90,18 @@ environment_vars:
 - `PYZ: "/usr/lpp/IBM/cyp/v3r11/pyz"`: ターゲット環境(z/OS)のPythonのインストール・パス
 - `ZOAU: "/usr/lpp/IBM/zoautil"`: ターゲット環境(z/OS)のZOAUのインストール・パス
 - `ansible_python_interpreter: "{{ PYZ }}/bin/python3"`: ターゲット環境(z/OS)のPythonプログラムのパス
+
+### Playbook (zos_operator.yml)
+
+```yaml
+- name: submit a zos command
+  hosts: <name>
+  environment: "{{ environment_vars }}"
+  gather_facts: no
+  ...
+```
+
+inventoryに指定した管理対象のホスト名に合わせてPlaybook中のhosts指定を変更します。
 
 
 ## 4. サンプルのPlaybookを実行(稼働確認)
