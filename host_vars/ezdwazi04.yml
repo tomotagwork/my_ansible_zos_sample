@@ -5,7 +5,7 @@ ansible_python_interpreter: "{{ PYZ }}/bin/python3"
 environment_vars:
   _BPXK_AUTOCVT: "ALL"
   ZOAU_HOME: "{{ ZOAU }}"
-  PYTHONPATH: "{{ PYZ }}/lib:{{ ZOAU }}/lib"
+  PYTHONPATH: "{{ PYZ }}/lib"
   LIBPATH: "{{ ZOAU }}/lib:{{ PYZ }}/lib:/lib:/usr/lib:."
   PATH: "{{ ZOAU }}/bin:{{ PYZ }}/bin:/bin:/var/bin"
   _CEE_RUNOPTS: "FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)"
